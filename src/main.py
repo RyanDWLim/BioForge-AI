@@ -12,6 +12,10 @@ sequence = read_fasta(
     "data/raw/hemoglobin.fasta"
 )
 
+from report import generate_report
+
+
+#---------------------------------------------------
 print("BioForge Protein Analyzer")
 print("------------------------")
 
@@ -34,10 +38,20 @@ if validate_sequence(sequence):
         amino_acid_percentage(sequence)
     )
 
+    counts = count_amino_acids(sequence)
+
+    percentages = amino_acid_percentage(sequence)
+
+    weight = molecular_weight(sequence)
+
+
     print(
-        "Molecular Weight:",
-        molecular_weight(sequence),
-        "Da"
+        generate_report(
+            sequence,
+            counts,
+            percentages,
+            weight
+        )
     )
 
 else:

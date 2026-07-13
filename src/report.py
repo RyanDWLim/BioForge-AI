@@ -1,9 +1,13 @@
-def generate_report(sequence, counts, percentages, weight):
+def generate_report(name, sequence, counts, percentages, weight):
+
 
     report = f"""
     =========================
     BioForge Protein Report
     =========================
+
+    Protein Name:
+    {name}
 
     Sequence Length:
     {len(sequence)} amino acids

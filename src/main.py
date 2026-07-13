@@ -8,12 +8,21 @@ from protein import (
 
 from fasta_reader import read_fasta
 
-sequence = read_fasta(
-    "data/raw/hemoglobin.fasta"
-)
-
 from report import generate_report
 
+from uniprot import get_protein_from_uniprot
+
+protein_id = input(
+    "Enter UniProt ID: "
+)
+
+protein = get_protein_from_uniprot(
+    protein_id
+)
+
+sequence = protein["sequence"]
+
+protein_name = protein["name"]
 
 #---------------------------------------------------
 print("BioForge Protein Analyzer")
@@ -47,6 +56,7 @@ if validate_sequence(sequence):
 
     print(
         generate_report(
+            protein_name,
             sequence,
             counts,
             percentages,

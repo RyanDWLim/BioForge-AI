@@ -1,18 +1,13 @@
+from Bio import SeqIO
+
 def read_fasta(file_path):
 
-    sequence = ""
+    record = SeqIO.read(
+        file_path,
+        "fasta"
+    )
 
-    with open(file_path, "r") as file:
-
-        for line in file:
-
-            line = line.strip()
-
-            # Ignore the description line
-            if line.startswith(">"):
-                continue
-
-            # Add sequence lines
-            sequence += line
-
-    return sequence
+    return {
+        "name": record.description,
+        "sequence": str(record.seq)
+    }

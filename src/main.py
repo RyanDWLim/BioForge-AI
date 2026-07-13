@@ -6,13 +6,14 @@ from protein import (
     molecular_weight
 )
 
-# Example protein sequence
-sequence = "MVLSPADKTNVKAAWGKVGAHAGEYGAEAL"
+from fasta_reader import read_fasta
 
+sequence = read_fasta(
+    "data/raw/hemoglobin.fasta"
+)
 
 print("BioForge Protein Analyzer")
 print("------------------------")
-
 
 if validate_sequence(sequence):
 
@@ -42,3 +43,4 @@ if validate_sequence(sequence):
 else:
 
     print("Invalid sequence")
+
